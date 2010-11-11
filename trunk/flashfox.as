@@ -35,10 +35,10 @@ var connect,
 	is_seeking = false,
 	first_hover = false,
 
-	autoplay = !!_root.autoplay,
-	controls_locked = !_root.controls,
+	autoplay = _root.autoplay == "true",
+	controls_locked = _root.controls == "false",
 
-	controls_visible = false,
+	controls_visible = _root.controls == "true",
 	controls_hover_timeout = 24 * 8,
 	controls_override = false,
 
@@ -102,7 +102,7 @@ audio = new Sound(video_canvas);
 audio.setVolume(100);
 
 stream.onMetaData = function (args) {
-	fadeOut(poster_canvas, 2);
+	fadeOut(poster_canvas, 30);
 
 	video_trueWidth = (_root.width) ? _root.width : args.width || Stage.width;
 	video_trueHeight = (_root.height) ? _root.height : args.height || Stage.height;
@@ -687,7 +687,7 @@ setInterval(
 
 display_init();
 
-if (is_autoplay) {
+if (autoplay) {
 	fn_play();
 }
 
