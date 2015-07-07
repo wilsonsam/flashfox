@@ -1,0 +1,1 @@
+FlashFox is a flash player emulating the HTML5 video player for Firefox.
